@@ -1,0 +1,174 @@
+{
+  "name": "AI_Web_Web_Search",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "26e4302d-712f-422e-a418-eab94c1293c0",
+      "name": "When chat message received",
+      "webhookId": "3005b0b3-5507-4214-aa93-9226398a51c4"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "40921d5c-ab4f-4146-a761-37c05e828f1b",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "q": "={{ $json.chatInput || \"latest AI news\" }}\n",
+        "locationSettings": {},
+        "languageSettings": {},
+        "searchOptions": {},
+        "timeFilters": {},
+        "pagination": {},
+        "advancedOptions": {},
+        "requestOptions": {}
+      },
+      "type": "@searchapi/n8n-nodes-searchapi.searchApi",
+      "typeVersion": 1,
+      "position": [
+        560,
+        0
+      ],
+      "id": "43b9ece4-9966-4596-ab31-c07241171fa4",
+      "name": "Search google",
+      "credentials": {
+        "searchApi": {
+          "id": "Ee0Eyz1PBjKtxQgs",
+          "name": "SearchApi account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        80,
+        208
+      ],
+      "id": "78c15b8d-8797-4025-825a-7d3037323c54",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "jNTU3zpxcr2YAPPz",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        224,
+        208
+      ],
+      "id": "32923e12-fe5f-4f54-90c2-c9f9d3bacb55",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        368,
+        208
+      ],
+      "id": "8ab4098a-130c-49cd-895a-a3818e2c8be8",
+      "name": "Calculator"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Search google",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "10b0c53d-4bae-454d-812c-173e6c7d1e86",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ff6d67dab5faf2a9f51d1843bfc7a4bc91815ba13b840615d61b02db3201dd7b"
+  },
+  "id": "EoMf505nySRdDFUk",
+  "tags": []
+}

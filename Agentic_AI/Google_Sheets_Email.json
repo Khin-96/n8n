@@ -1,0 +1,176 @@
+{
+  "name": "Agentic_AI_Work_Flow",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "HTML",
+        "formDescription": "\"This form allows users to get in touch with us by providing their name, email address, subject, and message. It ensures quick communication and helps us respond to inquiries efficiently.\"",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Name",
+              "placeholder": "Enter your Name"
+            },
+            {
+              "fieldLabel": "ph",
+              "placeholder": "ph"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f0ed2743-d9bc-4144-8d55-082a6afa77b7",
+      "name": "On form submission",
+      "webhookId": "b614d2b5-e00d-42bc-996e-5b9747d91c13"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1Bat1lpGLm1Grc93oJlX3fZUd_9SRh6wZcsVCP7PN268",
+          "mode": "list",
+          "cachedResultName": "Untitled spreadsheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Bat1lpGLm1Grc93oJlX3fZUd_9SRh6wZcsVCP7PN268/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Bat1lpGLm1Grc93oJlX3fZUd_9SRh6wZcsVCP7PN268/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ph",
+              "displayName": "ph",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "submittedAt",
+              "displayName": "submittedAt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "formMode",
+              "displayName": "formMode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "a5048a9c-70f0-49b7-b161-12e653188d22",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tnIovgwaGFOz8AAS",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "hinzanno@gmail.com",
+        "subject": "Automation",
+        "emailType": "text",
+        "message": "its a test automation",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        416,
+        0
+      ],
+      "id": "10d80d21-7181-46ad-8ad0-c54d2f6c6fac",
+      "name": "Send a message",
+      "webhookId": "86ab11d5-4430-4891-bf1e-8d697b038f11",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "I9Buf2UQgCRQknGP",
+          "name": "Gmail account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "05a1bc73-3ad1-4f6e-827a-a03d3a552cca",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "de84902bf4181d7a63808b973b513a978634d2acf9e1959ccab627ab47928275"
+  },
+  "id": "Xv3TxQFVPt1Q9piJ",
+  "tags": []
+}
