@@ -4,7 +4,7 @@ Welcome! This repository contains my collection of n8n workflows - automation bl
 
 ## 📖 What is n8n?
 
-**n8n** (pronounced "nodemation") is a powerful, fair-code licensed workflow automation tool that allows you to connect various applications, services, and APIs together. Think of it as a more flexible, self-hosted alternative to tools like Zapier, IFTTT, or Make (formerly Integro mat).
+**n8n** (pronounced "nodemation") is a powerful, fair-code licensed workflow automation tool that allows you to connect various applications, services, and APIs together. Think of it as a more flexible, self-hosted alternative to tools like Zapier, IFTTT, or Make (formerly Integromat).
 
 ### Key Features of n8n
 
