@@ -1,4 +1,4 @@
-# n8n Workflow Automations by Khin-96
+# n8n Workflow Automations by Kingaa
 
 Welcome to the [Khin-96/n8n](https://github.com/Khin-96/n8n) repository. This repository presents a set of operational automations and integrations built with [n8n](https://n8n.io/), designed to streamline business processes such as CV evaluation, web form data collection, AI-based chat assistants, and conversational sales data insights.
 
